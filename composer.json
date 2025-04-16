@@ -1,7 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "samen/resume-generator",
+    "version": "0.1.0",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Resume Generator is a Laravel-based web application that allows users to create and customize their resumes easily. It provides a user-friendly interface, various templates, and the ability to download resumes in multiple formats.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
