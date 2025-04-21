@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Resume\ResumeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +34,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Resume routes
+    Route::get('/profile/resume', [ResumeController::class, 'create'])->name('resume.create');
+    Route::post('/profile/resume', [ResumeController::class, 'store'])->name('resume.store');
+
+    Route::prefix('resume')->group(function () {
+
+        Route::get('/', function (){
+            return Inertia::render('Resume/Resume');
+        })->name('resume');
+
+        Route::get('/create', function (){
+            return Inertia::render('Resume/CreateResume');
+        })->name('vue.resume.create');
+
+        Route::post('/', [ResumeController::class, 'store'])->name('vue.resume.store');
+
+
+    });
 });
 
 require __DIR__.'/auth.php';
